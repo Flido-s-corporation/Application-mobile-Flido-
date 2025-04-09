@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient"; // Importation de expo-linear-gradient la bibliothèque qui gère la couleur 
+import styles from '../../Styles/accueilStyle'; //Importation du style de accueil
 
 const Accueil = () => {
   const router = useRouter(); // Initialisation de router pour les changements de page
@@ -36,30 +37,5 @@ const Accueil = () => {
     </>
 );
 };
-
-const styles = StyleSheet.create({
-  gradient: {
-    flex: 1, 
-  },
-  appContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-  },
-  image: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-  },
-
-  appInfo: {
-    alignItems: "center",
-    marginTop: "60%"
-  },
-  buttons: {
-    marginTop: "20%",
-  },
-  
-});
 
 export default Accueil;
