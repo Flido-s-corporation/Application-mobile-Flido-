@@ -9,7 +9,8 @@ const Accueil = () => {
   return (
     <>
     <LinearGradient
-        colors={["#000080", "#800080"]} // Bleu foncé vers violet
+        // colors={["#000000", "#3533cd", "#6933cd", "#2c1b4b"]} // Bleu foncé vers violet
+        colors={["#000080", "#800080"]}
         style={styles.gradient}
     >
         <View style={styles.appContainer}>
