@@ -9,8 +9,8 @@ const Accueil = () => {
   return (
     <>
     <LinearGradient
-        // colors={["#000000", "#3533cd", "#6933cd", "#2c1b4b"]} // Bleu foncé vers violet
-        colors={["#000080", "#800080"]}
+         colors={["#000000", "#3533cd", "#6933cd", "#2c1b4b"]} // Bleu foncé vers violet
+        // colors={["#000080", "#800080"]}
         style={styles.gradient}
     >
         <View style={styles.appContainer}>
@@ -21,7 +21,11 @@ const Accueil = () => {
 
             <View style={styles.buttons}>
                 <TouchableOpacity>
-                    <Text style={styles.buttonConnexion}>CONNEXION</Text>
+                    <Text style={styles.buttonConnexion}
+                        onPress={() => router.push('/Pages/connexion')}
+                    >
+                        CONNEXION
+                    </Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Text style={styles.buttonInscription}>INSCRIPTION</Text>
@@ -33,6 +37,7 @@ const Accueil = () => {
                     SEPARATED BY FRONTIERS, UNITED BY FLIDO
                 </Text>
             </View>
+
         </View>
     </LinearGradient>
     </>
