@@ -11,7 +11,10 @@ async function getUserData(access_token){
 }
 
 //Route GET pour la page d'accueil
-router.get("/",authController.accueil(req,res,next));
+router.get("/", (req, res, next) => {
+    authController.accueil(req, res, next);
+  });
+  
 
 //Route POST pour créer l'utilisateur
 router.post("/api/register", (req, res) => authController.signup(req, res));

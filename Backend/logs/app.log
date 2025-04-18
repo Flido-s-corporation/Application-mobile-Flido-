@@ -92,3 +92,11 @@
 2025-04-10 09:59:30 warn: Erreur d'inscription: Champs manquants
 2025-04-10 09:59:31 info: Utilisateur créer
 2025-04-10 09:59:31 warn: Erreur d'inscription: testuser1@gmail.com existe déjà
+2025-04-18 16:37:44 info: Connected to MongoDB
+2025-04-18 16:37:44 info: Server is running on port 3000
+2025-04-18 16:37:56 info: Connected to MongoDB
+2025-04-18 16:37:56 info: Server is running on port 3000
+2025-04-18 16:38:56 info: Connected to MongoDB
+2025-04-18 16:38:56 info: Server is running on port 3000
+2025-04-18 16:39:36 info: Connected to MongoDB
+2025-04-18 16:39:36 info: Server is running on port 3000

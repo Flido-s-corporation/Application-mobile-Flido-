@@ -6,12 +6,27 @@ const mongoose = require("mongoose");
 const path = require("path");
 const logger = require("./middlewares/winston");
 const authRoutes = require("./routes/authRoutes");
+const cors = require("cors");
+
+
+// Configuration de CORS
+const corsOptions = {
+  origin: process.env.CLIENT_URL, // Autoriser uniquement l'origine spécifiée dans les variables d'environnement
+  credentials: true, // Autoriser l'envoi de cookies ou d'en-têtes d'authentification
+  allowedHeaders: ['sessionId', 'Content-Type', 'Authorization'], // En-têtes autorisés dans les requêtes, ajout de 'Authorization'
+  exposedHeaders: ['sessionId'], // En-têtes exposés dans les réponses
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'], // Méthodes HTTP autorisées
+  preflightContinue: false // Ne pas continuer vers le prochain middleware pour les requêtes OPTIONS
+};
+
 
 //Création d'une instance de Express et configation de base de middlewares
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../FrontFlido/views")));
+//Donner accèes au frontend
+app.use(cors(corsOptions));
 
 //Middelware pour les log d'accès aux pages
 app.use((req, res, next) => {

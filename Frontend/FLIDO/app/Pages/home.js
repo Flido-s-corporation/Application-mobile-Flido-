@@ -14,21 +14,18 @@ const Accueil = () => {
         style={styles.gradient}
     >
         <View style={styles.appContainer}>
-            {/* <Image
+            <Image
                 style={styles.image}
                 source={require('../../assets/flido.png')}
-            /> */}
+            />
 
             <View style={styles.buttons}>
                 <TouchableOpacity>
                     <Text style={styles.buttonConnexion}
-                        onPress={() => router.push('/Pages/connexion')}
+                        onPress={() => router.push('/Pages/accueil')}
                     >
-                        CONNEXION
+                        GET STARTED
                     </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.buttonInscription}>INSCRIPTION</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.appInfo}>
