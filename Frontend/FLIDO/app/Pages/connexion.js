@@ -44,10 +44,10 @@ const LoginScreen = () => {
           <Text style={styles.buttonText}>Se connecter</Text>
         </TouchableOpacity>
         <Text style={styles.orText}>ou</Text>
-        {/* <TouchableOpacity style={styles.googleLogin}>
+        <TouchableOpacity style={styles.googleLogin}>
           <Image style={styles.googleIcon} source={require('../../assets/google.png')} />
           <Text style={styles.googleLoginText}>Se connecter avec Google</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity> 
         <TouchableOpacity>
           <Text style={styles.signupLink}>Pas encore de compte? S'inscrire</Text>
         </TouchableOpacity>

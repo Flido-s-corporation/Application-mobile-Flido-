@@ -100,3 +100,27 @@
 2025-04-18 16:38:56 info: Server is running on port 3000
 2025-04-18 16:39:36 info: Connected to MongoDB
 2025-04-18 16:39:36 info: Server is running on port 3000
+2025-04-18 17:17:59 info: Connected to MongoDB
+2025-04-18 17:17:59 info: Server is running on port 3000
+2025-04-18 17:18:08 info: POST /api/register
+2025-04-18 17:18:08 info: Utilisateur créer
+2025-04-18 17:47:49 info: POST /api/register
+2025-04-18 17:47:50 info: Utilisateur créer
+2025-04-18 18:43:55 info: POST /api/register
+2025-04-18 18:43:56 info: Utilisateur créer
+2025-04-18 19:39:09 info: POST /api/register
+2025-04-18 19:39:09 info: Utilisateur créer
+2025-04-18 19:41:33 info: POST /api/register
+2025-04-18 19:41:33 error: Erreur durant l'inscription User validation failed: firstName: Le prénom ne peut contenir que des lettres, espaces, apostrophes ou tirets
+2025-04-18 19:52:36 info: POST /api/register
+2025-04-18 19:52:36 error: Erreur durant l'inscription User validation failed: firstName: Le prénom ne peut contenir que des lettres, espaces, apostrophes ou tirets
+2025-04-18 19:54:07 info: Connected to MongoDB
+2025-04-18 19:54:07 info: Server is running on port 3000
+2025-04-18 19:54:57 info: POST /api/register
+2025-04-18 19:54:58 info: Utilisateur créer
+2025-04-18 22:16:11 info: Connected to MongoDB
+2025-04-18 22:16:11 info: Server is running on port 3000
+2025-04-18 22:19:14 info: Connected to MongoDB
+2025-04-18 22:19:14 info: Server is running on port 3000
+2025-04-19 08:35:29 info: Connected to MongoDB
+2025-04-19 08:35:29 info: Server is running on port 3000

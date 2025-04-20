@@ -28,7 +28,9 @@ const Accueil = () => {
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styles.buttonInscription}>INSCRIPTION</Text>
+                    <Text style={styles.buttonInscription}
+                    onPress={() => router.push('/Pages/inscription')}
+                    >INSCRIPTION</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.appInfo}>
