@@ -11,10 +11,10 @@ const cors = require("cors");
 
 // Configuration de CORS
 const corsOptions = {
-  origin: process.env.CLIENT_URL, // Autoriser uniquement l'origine spécifiée dans les variables d'environnement
+  origin: '*', // Autoriser toutes les origines
   credentials: true, // Autoriser l'envoi de cookies ou d'en-têtes d'authentification
-  allowedHeaders: ['sessionId', 'Content-Type', 'Authorization'], // En-têtes autorisés dans les requêtes, ajout de 'Authorization'
-  exposedHeaders: ['sessionId'], // En-têtes exposés dans les réponses
+  allowedHeaders: ['sessionId', 'Content-Type', 'Authorization'], // En-têtes autorisés
+  exposedHeaders: ['sessionId'], // En-têtes exposés
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'], // Méthodes HTTP autorisées
   preflightContinue: false // Ne pas continuer vers le prochain middleware pour les requêtes OPTIONS
 };

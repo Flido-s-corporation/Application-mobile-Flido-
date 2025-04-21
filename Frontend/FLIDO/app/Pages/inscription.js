@@ -54,6 +54,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 //fin
 
+
 const API_URL = "http://192.168.186.1:3000/api";
 const SingUpScreen = () => {
   const router = useRouter();
@@ -73,23 +74,17 @@ const SingUpScreen = () => {
   };
 
   const handleSignup = async () => {
-    //Validation simple sans la backend
-
+    // Validation simple sans la backend
     if (formData.password !== formData.confirmPassword) {
       Alert.alert("ERREUR", "Les mots de passe ne correspondent pas");
       return;
     }
-
-    if (
-      !formData.email ||
-      !formData.password ||
-      !formData.firstName ||
-      !formData.lastName
-    ) {
+  
+    if (!formData.email || !formData.password || !formData.firstName || !formData.lastName) {
       Alert.alert("ERREUR", "Veuillez remplir tous les champs");
       return;
     }
-
+  
     try {
       const response = await axios.post(`${API_URL}/register`, {
         firstName: formData.firstName,
@@ -97,33 +92,35 @@ const SingUpScreen = () => {
         email: formData.email,
         password: formData.password,
       });
-
+  
       if (response.status === 201) {
         Alert.alert("Succès", "Vous êtes inscrit avec succès");
         return router.push("/Pages/connexion");
-      } else {
-        Alert.alert("ERREUR", "Erreur inconnue");
       }
     } catch (error) {
       let errorMessage = "Erreur lors de l'inscription";
-
-      if (response) {
-        switch (response.status) {
+      
+      // Vérifiez d'abord si l'erreur a une réponse
+      if (error.response) {
+        switch (error.response.status) {
           case 400:
-            errorMessage = "Champs manquants";
+            errorMessage = "Tous les champs sont obligatoires.";
             break;
           case 409:
-            errorMessage = "Email déja utilisé";
+            errorMessage = "Email déjà utilisé";
             break;
           case 500:
-            errorMessage = "Erreur serveur";
+            errorMessage = "Erreur serveur lors de la création de l'utilisateur.";
             break;
+          default:
+            errorMessage = `Erreur serveur (${error.response.status})`;
         }
       } else if (error.request) {
-        errorMessage = "Pas de reponse du serveur";
+        errorMessage = "Pas de réponse du serveur";
       } else {
-        errorMessage = "Erreur réseau";
+        errorMessage = "Erreur réseau ou configuration";
       }
+      
       Alert.alert("ERREUR", errorMessage);
       console.error("Détail de l'erreur: ", error);
     }

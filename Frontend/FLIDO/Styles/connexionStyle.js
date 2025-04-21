@@ -1,9 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
-    backgroundColor: "#4b0082", // Fond violet couvrant tout l'écran
+    backgroundColor: "#4b0082",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -12,30 +14,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 200,
-    height: 200,
-    marginBottom: 20, // Plus d'espace sous le logo
-    borderRadius: 100,
+    width: width * 0.5, // Adaptation à la taille de l'écran
+    height: width * 0.5,
+    marginBottom: height * 0.02,
+    borderRadius: (width * 0.5) / 2, // Bordure arrondie proportionnelle
   },
   title: {
-    fontSize: 28,
+    fontSize: width * 0.08,
     fontWeight: "bold",
     color: "white",
-    marginBottom: 10, // Espacement entre le titre et le sous-titre
+    marginBottom: height * 0.015,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: width * 0.045,
     color: "white",
-    marginBottom: 30, // Espacement entre le sous-titre et le champ de texte
+    marginBottom: height * 0.03,
   },
   inputGroup: {
     width: "100%",
-    marginBottom: 20, // Plus d'espace entre les champs de texte
+    marginBottom: height * 0.02,
     position: "relative",
   },
   input: {
     width: "100%",
-    padding: 10,
+    padding: height * 0.015,
     borderRadius: 5,
     backgroundColor: "white",
   },
@@ -47,46 +49,49 @@ const styles = StyleSheet.create({
   forgotPassword: {
     color: "#ccc",
     textDecorationLine: "underline",
-    marginBottom: 30, // Espacement entre le lien de mot de passe oublié et le bouton
+    marginBottom: height * 0.03,
   },
   loginButton: {
     width: "100%",
     backgroundColor: "#000080",
-    padding: 15, // Espacement interne plus grand pour le bouton
+    padding: height * 0.02,
     borderRadius: 5,
     alignItems: "center",
-    marginBottom: 20, // Espacement entre le bouton et le texte "ou"
+    marginBottom: height * 0.02,
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
+    fontSize: width * 0.045,
   },
   orText: {
     color: "#ccc",
-    marginBottom: 20, // Espacement entre "ou" et le bouton Google
+    marginBottom: height * 0.02,
   },
   googleLogin: {
     width: "100%",
     backgroundColor: "white",
-    padding: 15, // Espacement interne plus grand pour le bouton Google
+    padding: height * 0.02,
     borderRadius: 5,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 30, // Espacement entre le bouton Google et le lien d'inscription
+    marginBottom: height * 0.03,
   },
   googleIcon: {
-    width: 20,
-    height: 20,
+    width: width * 0.05,
+    height: width * 0.05,
     marginRight: 10,
-
   },
   googleLoginText: {
     color: "black",
+    fontSize: width * 0.04,
   },
   signupLink: {
     color: "#ccc",
     textDecorationLine: "underline",
+    marginBottom: "10%",
+    fontSize: width * 0.04,
   },
 });
 
