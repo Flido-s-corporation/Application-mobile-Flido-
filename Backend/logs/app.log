@@ -134,3 +134,63 @@
 2025-04-21 13:09:10 info: Utilisateur créer
 2025-04-21 13:12:42 info: Connected to MongoDB
 2025-04-21 13:12:42 info: Server is running on port 3000
+2025-04-21 13:13:03 info: Connected to MongoDB
+2025-04-21 13:13:03 info: Server is running on port 3000
+2025-04-21 14:16:40 info: POST /api/register
+2025-04-21 14:16:40 info: Utilisateur créer
+2025-04-21 14:19:57 info: POST /api/register
+2025-04-21 14:19:58 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:20:08 info: POST /api/register
+2025-04-21 14:20:08 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:20:11 info: POST /api/register
+2025-04-21 14:20:11 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:01 info: POST /api/register
+2025-04-21 14:21:01 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:03 info: POST /api/register
+2025-04-21 14:21:03 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:11 info: POST /api/register
+2025-04-21 14:21:11 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:12 info: POST /api/register
+2025-04-21 14:21:12 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:13 info: POST /api/register
+2025-04-21 14:21:13 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:13 info: POST /api/register
+2025-04-21 14:21:13 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:13 info: POST /api/register
+2025-04-21 14:21:14 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:14 info: POST /api/register
+2025-04-21 14:21:14 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:14 info: POST /api/register
+2025-04-21 14:21:14 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:14 info: POST /api/register
+2025-04-21 14:21:14 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:27 info: POST /api/register
+2025-04-21 14:21:28 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:21:29 info: POST /api/register
+2025-04-21 14:21:29 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:22:35 info: POST /api/register
+2025-04-21 14:22:35 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:22:37 info: POST /api/register
+2025-04-21 14:22:37 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:22:38 info: POST /api/register
+2025-04-21 14:22:38 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:22:39 info: POST /api/register
+2025-04-21 14:22:39 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:23:57 info: POST /api/register
+2025-04-21 14:23:57 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:25:49 info: POST /api/register
+2025-04-21 14:25:49 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:25:53 info: POST /api/register
+2025-04-21 14:25:53 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:26:19 info: POST /api/register
+2025-04-21 14:26:19 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:54:46 info: POST /api/register
+2025-04-21 14:54:46 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:54:56 info: POST /api/register
+2025-04-21 14:54:57 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 14:55:27 info: POST /api/register
+2025-04-21 14:55:27 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 15:00:29 info: POST /api/register
+2025-04-21 15:00:29 warn: Erreur d'inscription: adiglialexis@gmail.com existe déjà
+2025-04-21 15:00:45 info: POST /api/register
+2025-04-21 15:00:46 info: Utilisateur créer
