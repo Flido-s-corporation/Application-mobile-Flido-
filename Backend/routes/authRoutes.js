@@ -20,7 +20,10 @@ router.get("/", (req, res, next) => {
 router.post("/api/register", (req, res) => authController.signup(req, res));
 
 //Route google Auth
-router.post('/api/auth/google',(req,res,next) => authController.googleAuth(req,res,next))
+router.post('/api/auth/google',(req,res,next) => authController.googleAuth(req,res,next));
+
+//Route POST pour se connecter
+router.post("/api/login", (req,res)=> authController.login(req,res));
 
 
 //Exportation des routes pour les utiliser dans d'autres fichiers du backend

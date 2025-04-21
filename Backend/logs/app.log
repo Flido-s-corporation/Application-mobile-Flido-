@@ -134,3 +134,19 @@
 2025-04-21 13:09:10 info: Utilisateur créer
 2025-04-21 13:12:42 info: Connected to MongoDB
 2025-04-21 13:12:42 info: Server is running on port 3000
+2025-04-21 18:44:50 info: Connected to MongoDB
+2025-04-21 18:44:50 info: Server is running on port 3000
+2025-04-21 18:45:51 info: POST /api/register
+2025-04-21 18:45:51 info: Utilisateur créer
+2025-04-21 18:46:45 info: POST /api/login
+2025-04-21 18:48:10 info: Connected to MongoDB
+2025-04-21 18:48:10 info: Server is running on port 3000
+2025-04-21 18:48:16 info: POST /api/login
+2025-04-21 18:55:20 info: Connected to MongoDB
+2025-04-21 18:55:20 info: Server is running on port 3000
+2025-04-21 18:55:27 info: POST /api/login
+2025-04-21 18:55:27 info: Utilisateur connecté avec succès
+2025-04-21 18:55:44 info: POST /api/login
+2025-04-21 18:55:44 warn: Email introuvable
+2025-04-21 18:55:53 info: POST /api/login
+2025-04-21 18:55:54 warn: Mot de passe erroné

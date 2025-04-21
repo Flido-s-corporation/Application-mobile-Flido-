@@ -8,13 +8,13 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const logger = require("../middlewares/winston");
-const {OAuth2Client} = require('google-auth-library');
+const { OAuth2Client } = require("google-auth-library");
 const { get } = require("http");
 
-module.exports.accueil = async (req, res,next) => {
+module.exports.accueil = async (req, res, next) => {
   const code = req.query.code;
-  try{
-    const redirectUrl = 'http://127.0.0.1:3000/oauth'
+  try {
+    const redirectUrl = "http://127.0.0.1:3000/oauth";
     const oAuth2Client = new OAuth2Client(
       process.env.CLIENT_ID,
       process.env.CLIENT_SECRET,
@@ -22,15 +22,14 @@ module.exports.accueil = async (req, res,next) => {
     );
     const res = await oAuth2Client.getToken(code);
     await oAuth2Client.setCredentials(res.tokens);
-    console.log('Tokens acquired:', res.tokens);
+    console.log("Tokens acquired:", res.tokens);
     const user = oAuth2Client.credentials;
-    console.log('credentials', user);
+    console.log("credentials", user);
     await getUserData(user.access_token);
-  }catch(error){
-    console.error('Error with signing with google', error);
+  } catch (error) {
+    console.error("Error with signing with google", error);
   }
-}
-
+};
 
 module.exports.signup = async (req, res) => {
   try {
@@ -79,11 +78,12 @@ module.exports.signup = async (req, res) => {
   }
 };
 
-module.exports.googleAuth = async (req, res, next) =>{
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Referrer-Policy', 'no-referrer-when-downgrade');
+//Auth avec google, NE MARCHE PAS
+module.exports.googleAuth = async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Referrer-Policy", "no-referrer-when-downgrade");
 
-  const redirectUrl = 'http://127.0.0.1:3000/oauth';
+  const redirectUrl = "http://127.0.0.1:3000/oauth";
 
   const oAuth2Client = new OAuth2Client(
     process.env.CLIENT_ID,
@@ -92,10 +92,46 @@ module.exports.googleAuth = async (req, res, next) =>{
   );
 
   const authorizeUrl = oAuth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: 'https://www.googleapis.com/auth/userinfo.profile openid',
-    prompt: 'consent'
+    access_type: "offline",
+    scope: "https://www.googleapis.com/auth/userinfo.profile openid",
+    prompt: "consent",
   });
 
-  res.json({url: authorizeUrl});
-}
+  res.json({ url: authorizeUrl });
+};
+
+module.exports.login = async (req, res) => {
+  try {
+    //VERIFIER SI L'utillisateur existe
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (!existingUser) {
+      logger.warn("Email introuvable");
+      return res
+        .status(400)
+        .json({ error: "L'email ou le mot de passe est incorrecte." });
+    }
+
+    //verifier si le mot de passe est correcte
+    const passwordCorrect = await bcrypt.compare(
+      req.body.password,
+      existingUser.password
+    );
+    if (!passwordCorrect) {
+      logger.warn("Mot de passe erroné");
+      return res
+        .status(400)
+        .json({ error: "L'email ou le mot de passe est incorrecte." });
+    }
+
+    //Créer et assigner un token
+    const token = jwt.sign({ _id: existingUser._id }, process.env.TOKEN_SECRET);
+    logger.info("Utilisateur connecté avec succès");
+    res.cookie("auth-token", token, { httpOnly: true, maxAge: 3600000 });
+    res.json({ message: "Login successful!" });
+  } catch (error) {
+    logger.error("Erreur durant la connexion: ", error);
+    res
+      .status(500)
+      .json({ error: "Erreur lors de la connexion de l'utilisateur." });
+  }
+};
