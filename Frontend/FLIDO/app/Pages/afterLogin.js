@@ -7,8 +7,7 @@ const AfterLogin = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Ici vous devrez implémenter la logique de déconnexion
-    // Par exemple : supprimer le token, effacer les cookies, etc.
+    //On implementera la logique de déconnexion
     router.push('/Pages/connexion');
   };
 
