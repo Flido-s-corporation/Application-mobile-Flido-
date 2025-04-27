@@ -2,10 +2,12 @@
 
 //Importation des dépendances
 const express = require("express");
+const session = require("express-session");
 const mongoose = require("mongoose");
 const path = require("path");
 const logger = require("./middlewares/winston");
 const authRoutes = require("./routes/authRoutes");
+const {OAuth2Client} = require("google-auth-library");
 const cors = require("cors");
 
 
@@ -22,6 +24,12 @@ const corsOptions = {
 
 //Création d'une instance de Express et configation de base de middlewares
 const app = express();
+
+app.use(session({
+  secret: process.env.SESSION_SECRET, // Clé secrète pour signer le cookie de session
+  resave: false, // Ne pas sauvegarder la session si elle n'a pas été modifiée
+  saveUninitialized: true, // Sauvegarder la session même si elle n'est pas initialisée
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../FrontFlido/views")));
@@ -33,6 +41,8 @@ app.use((req, res, next) => {
   logger.info(`${req.method} ${req.url}`);
   next();
 });
+
+app.set('view engine', 'ejs');
 
 //routes
 app.use("/", authRoutes);

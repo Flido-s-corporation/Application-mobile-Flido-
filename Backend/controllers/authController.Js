@@ -9,25 +9,18 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const logger = require("../middlewares/winston");
 const { OAuth2Client } = require("google-auth-library");
-const { get } = require("http");
 
-module.exports.accueil = async (req, res, next) => {
-  const code = req.query.code;
-  try {
-    const redirectUrl = "http://127.0.0.1:3000/oauth";
-    const oAuth2Client = new OAuth2Client(
-      process.env.CLIENT_ID,
-      process.env.CLIENT_SECRET,
-      redirectUrl
-    );
-    const res = await oAuth2Client.getToken(code);
-    await oAuth2Client.setCredentials(res.tokens);
-    console.log("Tokens acquired:", res.tokens);
-    const user = oAuth2Client.credentials;
-    console.log("credentials", user);
-    await getUserData(user.access_token);
-  } catch (error) {
-    console.error("Error with signing with google", error);
+const client = new OAuth2Client(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  process.env.REDIRECT_URI
+);
+
+module.exports.home = async (req, res) => {
+  if (req.session.user) {
+    return res.render("profil", { title: "Flido", user: req.session.user });
+  } else {
+    return res.render("index", { title: "Flido" });
   }
 };
 
@@ -78,28 +71,6 @@ module.exports.signup = async (req, res) => {
   }
 };
 
-//Auth avec google, NE MARCHE PAS
-module.exports.googleAuth = async (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header("Referrer-Policy", "no-referrer-when-downgrade");
-
-  const redirectUrl = "http://127.0.0.1:3000/oauth";
-
-  const oAuth2Client = new OAuth2Client(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    redirectUrl
-  );
-
-  const authorizeUrl = oAuth2Client.generateAuthUrl({
-    access_type: "offline",
-    scope: "https://www.googleapis.com/auth/userinfo.profile openid",
-    prompt: "consent",
-  });
-
-  res.json({ url: authorizeUrl });
-};
-
 module.exports.login = async (req, res) => {
   try {
     //VERIFIER SI L'utillisateur existe
@@ -134,4 +105,60 @@ module.exports.login = async (req, res) => {
       .status(500)
       .json({ error: "Erreur lors de la connexion de l'utilisateur." });
   }
+};
+
+module.exports.googleLogin = async (req, res) => {
+  const url = client.generateAuthUrl({
+    access_type: "offline",
+    scope: ["profile", "email"],
+  });
+  res.redirect(url);
+};
+
+module.exports.googleCallback = async (req, res) => {
+  const code = req.query.code;
+
+  try {
+    const { tokens } = await client.getToken(code);
+    //client.setCredentials(tokens);
+
+    const ticket = await client.verifyIdToken({
+      idToken: tokens.id_token,
+      audience: process.env.CLIENT_ID,
+    });
+
+    const payload = ticket.getPayload();
+    
+    let user = await User.findOne({ email: payload.email });
+
+    if (!user) {
+      // Si l'utilisateur n'existe pas, le créer
+      const hashedPassword = await bcrypt.hash(payload.sub, 10);
+
+      user = new User({
+        firstName: payload.given_name,
+        lastName: payload.family_name,
+        email: payload.email,
+        password: hashedPassword, // Utiliser l'ID Google comme mot de passe temporaire
+      });
+
+      await user.save();
+    }
+
+    req.session.user = {
+      id: user._id,
+      name: user.firstName + " " + user.lastName,
+      email: user.email,
+    };
+
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.logout = async (req, res) => {
+  req.session.destroy((err) => {
+  })
+  res.redirect('/');
 };
