@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient"; // Importation de expo-linear-gradient la bibliothèque qui gère la couleur 
-import styles from '../../Styles/accueilStyle'; //Importation du style de accueil
+
 
 const Accueil = () => {
   const router = useRouter(); // Initialisation de router pour les changements de page
@@ -11,33 +11,23 @@ const Accueil = () => {
     <LinearGradient
          colors={["#000000", "#3533cd", "#6933cd", "#2c1b4b"]} // Bleu foncé vers violet
         // colors={["#000080", "#800080"]}
-        style={styles.gradient}
+        className= 'flex-1'
     >
-        <View style={styles.appContainer}>
-            {/* <Image
-                style={styles.image}
-                source={require('../../assets/flido.png')}
-            /> */}
+        <View className= 'flex-1 items-center justify-center'>
 
-            <View style={styles.buttons}>
+            <View >
                 <TouchableOpacity>
-                    <Text style={styles.buttonConnexion}
+                    <Text className='text-white p-[10] bg-[#800080] rounded-[50] mb-[10] items-center text-center'
                         onPress={() => router.push('/Pages/connexion')}
                     >
                         CONNEXION
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styles.buttonInscription}
+                    <Text className='text-white p-[10] bg-[#000080] rounded-[50] mb-[10] items-center text-center w-[300]'
                     onPress={() => router.push('/Pages/inscription')}
                     >INSCRIPTION</Text>
                 </TouchableOpacity>
-            </View>
-            <View style={styles.appInfo}>
-                <Text style={styles.appName}>FLIDO</Text>
-                <Text style={styles.appDescription}>
-                    SEPARATED BY FRONTIERS, UNITED BY FLIDO
-                </Text>
             </View>
 
         </View>

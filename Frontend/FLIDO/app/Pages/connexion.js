@@ -65,10 +65,10 @@ const LoginScreen = () => {
   return (
     <LinearGradient
       colors={["#4b0082", "#6a0dad"]}
-      style={styles.gradient}
+    className = 'flex-1 justify-center bg-[#4b0082] items-center '
     >
-      <View style={styles.container}>
-        <Image style={styles.logo} source={require("../../assets/flido.png")} />
+      <View className=' w-[90%] items-center'>
+        <Image style={styles.logo}  source={require("../../assets/flido.png")} />
         <Text style={styles.title}>Flido</Text>
         <Text style={styles.subtitle}>Connecte-toi pour continuer</Text>
 

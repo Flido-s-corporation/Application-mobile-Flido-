@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient"; // Importation de expo-linear-gradient la bibliothèque qui gère la couleur 
-import styles from '../../Styles/accueilStyle'; //Importation du style de accueil
+
 
 const Accueil = () => {
   const router = useRouter(); // Initialisation de router pour les changements de page
@@ -11,15 +11,21 @@ const Accueil = () => {
     <LinearGradient
          colors={["#000000", "#3533cd", "#6933cd", "#2c1b4b"]} // Bleu foncé vers violet
         // colors={["#000080", "#800080"]}
-        style={styles.gradient}
+        className= 'flex-1'
     >
-        <View style={styles.appContainer}>
+        <View  className= ' flex-1 justify-center items-center'>
+
+        <View>
+                <Text className= 'text-white text-6xl font-bold'> FLIDO</Text>
+            </View>
+
+
             <Image
-                style={styles.image}
+                className= ' w-[200] h-[200] rounded-[100]'
                 source={require('../../assets/flido.png')}
             />
 
-            <View style={styles.buttons}>
+            {/* <View style={styles.buttons}>
                 <TouchableOpacity>
                     <Text style={styles.buttonConnexion}
                         onPress={() => router.push('/Pages/accueil')}
@@ -27,13 +33,8 @@ const Accueil = () => {
                         GET STARTED
                     </Text>
                 </TouchableOpacity>
-            </View>
-            <View style={styles.appInfo}>
-                <Text style={styles.appName}>FLIDO</Text>
-                <Text style={styles.appDescription}>
-                    SEPARATED BY FRONTIERS, UNITED BY FLIDO
-                </Text>
-            </View>
+            </View> */}
+            
 
         </View>
     </LinearGradient>
