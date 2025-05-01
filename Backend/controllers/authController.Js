@@ -10,12 +10,15 @@ const User = require("../models/userModel");
 const logger = require("../middlewares/winston");
 const { OAuth2Client } = require("google-auth-library");
 
+//Création d'une instance de OAuth2Client pour l'authentification Google
+// avec les identifiants du projet Google Cloud
 const client = new OAuth2Client(
   process.env.CLIENT_ID,
   process.env.CLIENT_SECRET,
   process.env.REDIRECT_URI
 );
 
+//page d'accueil ou page de profil en fonction de la présence de l'utilisateur dans la session
 module.exports.home = async (req, res) => {
   if (req.session.user) {
     return res.render("profil", { title: "Flido", user: req.session.user });
@@ -24,6 +27,7 @@ module.exports.home = async (req, res) => {
   }
 };
 
+//Fonction pour l'inscription de l'utilisateur
 module.exports.signup = async (req, res) => {
   try {
     //Chercher le nom, prénom, mail et mot de passe dans le requete
@@ -71,6 +75,7 @@ module.exports.signup = async (req, res) => {
   }
 };
 
+//Fonction pour la connexion de l'utilisateur
 module.exports.login = async (req, res) => {
   try {
     //VERIFIER SI L'utillisateur existe
@@ -107,6 +112,8 @@ module.exports.login = async (req, res) => {
   }
 };
 
+//Fonction pour la connexion avec Google
+//Redirection vers la page de connexion Google
 module.exports.googleLogin = async (req, res) => {
   const url = client.generateAuthUrl({
     access_type: "offline",
@@ -115,6 +122,8 @@ module.exports.googleLogin = async (req, res) => {
   res.redirect(url);
 };
 
+//Fonction pour la redirection après la connexion avec Google
+//Vérification du code d'autorisation et récupération des informations de l'utilisateur
 module.exports.googleCallback = async (req, res) => {
   const code = req.query.code;
 

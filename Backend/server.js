@@ -7,29 +7,28 @@ const mongoose = require("mongoose");
 const path = require("path");
 const logger = require("./middlewares/winston");
 const authRoutes = require("./routes/authRoutes");
-const {OAuth2Client} = require("google-auth-library");
 const cors = require("cors");
-
 
 // Configuration de CORS
 const corsOptions = {
-  origin: '*', // Autoriser toutes les origines
+  origin: "*", // Autoriser toutes les origines
   credentials: true, // Autoriser l'envoi de cookies ou d'en-têtes d'authentification
-  allowedHeaders: ['sessionId', 'Content-Type', 'Authorization'], // En-têtes autorisés
-  exposedHeaders: ['sessionId'], // En-têtes exposés
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'], // Méthodes HTTP autorisées
-  preflightContinue: false // Ne pas continuer vers le prochain middleware pour les requêtes OPTIONS
+  allowedHeaders: ["sessionId", "Content-Type", "Authorization"], // En-têtes autorisés
+  exposedHeaders: ["sessionId"], // En-têtes exposés
+  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"], // Méthodes HTTP autorisées
+  preflightContinue: false, // Ne pas continuer vers le prochain middleware pour les requêtes OPTIONS
 };
-
 
 //Création d'une instance de Express et configation de base de middlewares
 const app = express();
 
-app.use(session({
-  secret: process.env.SESSION_SECRET, // Clé secrète pour signer le cookie de session
-  resave: false, // Ne pas sauvegarder la session si elle n'a pas été modifiée
-  saveUninitialized: true, // Sauvegarder la session même si elle n'est pas initialisée
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET, // Clé secrète pour signer le cookie de session
+    resave: false, // Ne pas sauvegarder la session si elle n'a pas été modifiée
+    saveUninitialized: true, // Sauvegarder la session même si elle n'est pas initialisée
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../FrontFlido/views")));
@@ -42,7 +41,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
 //routes
 app.use("/", authRoutes);
