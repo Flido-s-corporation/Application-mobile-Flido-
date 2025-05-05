@@ -1,0 +1,27 @@
+buildscript {
+    ext {
+        buildToolsVersion = "34.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        kotlinVersion = "1.9.25"
+        ndkVersion = "26.1.10909125"
+        expoModulesCoreVersion = "1.6.0" // Version mise à jour
+    }
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "https://maven.expo.dev"
+            allowInsecureProtocol = true // À retirer après résolution
+        }
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.3.1")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("com.google.gms:google-services:4.4.1")
+        classpath("expo.modules:expo-modules-core:$expoModulesCoreVersion")
+    }
+}

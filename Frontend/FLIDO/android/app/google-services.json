@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "458647214743",
+    "project_id": "flido-b47f5",
+    "storage_bucket": "flido-b47f5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458647214743:android:1a123213972b0e1c5da7d2",
+        "android_client_info": {
+          "package_name": "com.devops.flido"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458647214743-ishlpcg61urtoib9d6mqtncr13fimdd3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh98SwN9LES125a6fxrWm0htu96A2b6Is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458647214743-ishlpcg61urtoib9d6mqtncr13fimdd3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

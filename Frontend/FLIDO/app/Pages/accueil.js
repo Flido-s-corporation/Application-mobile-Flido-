@@ -34,6 +34,7 @@ const Accueil = () => {
     </LinearGradient>
     </>
 );
+
 };
 
 export default Accueil;
