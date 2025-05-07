@@ -378,3 +378,65 @@
 2025-05-07 11:35:51 info: Server is running on port 3000
 2025-05-07 11:36:02 info: POST /api/register
 2025-05-07 11:36:03 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 12:35:06 info: Connected to MongoDB
+2025-05-07 12:35:06 info: Server is running on port 3000
+2025-05-07 12:38:49 info: Connected to MongoDB
+2025-05-07 12:38:49 info: Server is running on port 3000
+2025-05-07 12:42:18 info: Connected to MongoDB
+2025-05-07 12:42:18 info: Server is running on port 3000
+2025-05-07 12:43:44 info: GET /api/register
+2025-05-07 12:43:51 info: POST /api/register
+2025-05-07 12:43:52 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 12:45:54 info: Connected to MongoDB
+2025-05-07 12:45:54 info: Server is running on port 3000
+2025-05-07 12:46:03 info: POST /api/register
+2025-05-07 12:46:04 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 12:46:35 info: Connected to MongoDB
+2025-05-07 12:46:35 info: Server is running on port 3000
+2025-05-07 12:46:37 info: POST /api/register
+2025-05-07 12:46:38 info: Utilisateur créer
+2025-05-07 12:47:30 info: Connected to MongoDB
+2025-05-07 12:47:30 info: Server is running on port 3000
+2025-05-07 12:48:34 info: POST /api/register
+2025-05-07 12:48:36 info: Utilisateur créer
+2025-05-07 12:53:43 info: Connected to MongoDB
+2025-05-07 12:53:43 info: Server is running on port 3000
+2025-05-07 12:58:01 info: Connected to MongoDB
+2025-05-07 12:58:01 info: Server is running on port 3000
+2025-05-07 12:58:22 info: POST /api/register
+2025-05-07 12:58:23 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 12:58:41 info: POST /api/register
+2025-05-07 12:58:42 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 12:59:57 info: Connected to MongoDB
+2025-05-07 12:59:57 info: Server is running on port 3000
+2025-05-07 13:00:18 info: POST /api/register
+2025-05-07 13:00:18 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 13:03:09 info: Connected to MongoDB
+2025-05-07 13:03:09 info: Server is running on port 3000
+2025-05-07 13:03:12 info: POST /api/register
+2025-05-07 13:03:13 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 13:03:28 info: Connected to MongoDB
+2025-05-07 13:03:28 info: Server is running on port 3000
+2025-05-07 13:03:34 info: POST /api/register
+2025-05-07 13:03:35 info: Utilisateur créer
+2025-05-07 13:04:16 info: POST /api/login
+2025-05-07 13:04:16 info: Utilisateur connecté avec succès
+2025-05-07 13:06:14 info: POST /api/addContact
+2025-05-07 13:06:37 info: PUT /api/addContact
+2025-05-07 13:07:52 info: GET /api/findContact
+2025-05-07 13:08:45 info: PUT /api/addContact
+2025-05-07 13:08:45 warn: Le contact n'existe pas dans la base de données
+2025-05-07 13:09:26 info: Connected to MongoDB
+2025-05-07 13:09:26 info: Server is running on port 3000
+2025-05-07 13:09:34 info: Connected to MongoDB
+2025-05-07 13:09:34 info: Server is running on port 3000
+2025-05-07 13:09:38 info: PUT /api/addContact
+2025-05-07 13:09:38 warn: Utilisateur non connecté
+2025-05-07 13:10:34 info: Connected to MongoDB
+2025-05-07 13:10:34 info: Server is running on port 3000
+2025-05-07 13:11:26 info: Connected to MongoDB
+2025-05-07 13:11:26 info: Server is running on port 3000
+2025-05-07 13:11:33 info: Connected to MongoDB
+2025-05-07 13:11:33 info: Server is running on port 3000
+2025-05-07 13:12:03 info: Connected to MongoDB
+2025-05-07 13:12:03 info: Server is running on port 3000

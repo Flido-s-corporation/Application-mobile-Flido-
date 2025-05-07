@@ -21,12 +21,6 @@ router.get("/api/findContact", (req, res) => authController.findContact(req, res
 //Route pour ajouter un contact
 router.put("/api/addContact", (req, res) => authController.addContact(req, res));
 
-//Route GET pour se connecter avec Google
-router.get("/api/auth/google", (req,res)=> authController.googleLogin(req,res));
-
-//Route redirection pour la page de profil
-router.get('/auth/google/callback', async (req, res) => authController.googleCallback(req, res));
-
 //Route get deconnexion
 router.get('/auth/logout', (req, res) => authController.logout(req, res));
 

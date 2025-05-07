@@ -103,66 +103,19 @@ module.exports.login = async (req, res) => {
     const token = jwt.sign({ _id: existingUser._id }, process.env.TOKEN_SECRET);
     logger.info("Utilisateur connecté avec succès");
     res.cookie("auth-token", token, { httpOnly: true, maxAge: 3600000 });
+
+    req.session.user = {
+      id: existingUser._id,
+      name: existingUser.firstName + " " + existingUser.lastName,
+      email: existingUser.email,
+    };
+
     res.json({ message: "Login successful!" });
   } catch (error) {
     logger.error("Erreur durant la connexion: ", error);
     res
       .status(500)
       .json({ error: "Erreur lors de la connexion de l'utilisateur." });
-  }
-};
-
-//Fonction pour la connexion avec Google
-//Redirection vers la page de connexion Google
-module.exports.googleLogin = async (req, res) => {
-  const url = client.generateAuthUrl({
-    access_type: "offline",
-    scope: ["profile", "email"],
-  });
-  res.redirect(url);
-};
-
-//Fonction pour la redirection après la connexion avec Google
-//Vérification du code d'autorisation et récupération des informations de l'utilisateur
-module.exports.googleCallback = async (req, res) => {
-  const code = req.query.code;
-
-  try {
-    const { tokens } = await client.getToken(code);
-    //client.setCredentials(tokens);
-
-    const ticket = await client.verifyIdToken({
-      idToken: tokens.id_token,
-      audience: process.env.CLIENT_ID,
-    });
-
-    const payload = ticket.getPayload();
-    
-    let user = await User.findOne({ email: payload.email });
-
-    if (!user) {
-      // Si l'utilisateur n'existe pas, le créer
-      const hashedPassword = await bcrypt.hash(payload.sub, 10);
-
-      user = new User({
-        firstName: payload.given_name,
-        lastName: payload.family_name,
-        email: payload.email,
-        password: hashedPassword, // Utiliser l'ID Google comme mot de passe temporaire
-      });
-
-      await user.save();
-    }
-
-    req.session.user = {
-      id: user._id,
-      name: user.firstName + " " + user.lastName,
-      email: user.email,
-    };
-
-    res.redirect("/");
-  } catch (error) {
-    console.log(error);
   }
 };
 
@@ -175,11 +128,14 @@ module.exports.logout = async (req, res) => {
 //Fonction pour récupérer les contacts
 module.exports.findContact = async (req, res) => {
   try {
-    const { email } = req.body;
-    if(!email) {
-      logger.warn("L'email est obligatoire !");
-      return res.status(400).json({ error: "L'email est obligatoire !" });
+    // Vérifier si l'utilisateur est connecté
+    if (!req.session.user) {
+      logger.warn("Utilisateur non connecté");
+      return res.status(401).json({ error: "Vous devez être connecté pour accéder à vos contacts." });
     }
+
+    // Récupérer l'email de l'utilisateur connecté depuis la session
+    const email = req.session.user.email;
 
     // Rechercher l'utilisateur par email
     const user = await User.findOne({ email });
@@ -196,8 +152,8 @@ module.exports.findContact = async (req, res) => {
       return res.status(404).json({ error: "Aucun contact trouvé pour cet utilisateur" });
     }
 
+    // Retourner les contacts
     res.status(200).json({ success: true, contacts: user.contact });
-
   } catch (error) {
     logger.error("Erreur lors de la recherche du contact", error);
     res.status(500).json({
@@ -207,32 +163,52 @@ module.exports.findContact = async (req, res) => {
 };
 
 //Fonction pour ajouter un contact
-
-module.exports.addContact = async(req, res) => {
+module.exports.addContact = async (req, res) => {
   try {
-    //Cherche l'email et le contact dans la requete
-    const { email, contact } = req.body;
-
-    //Vérifier si l'email et le contact sont présents
-    if(!email || !contact) {
-      logger.warn("L'email et le contact sont obligatoires !");
-      return res.status(400).json({ error: "L'email et le contact sont obligatoires !" });
+    // Vérifier si l'utilisateur est connecté
+    if (!req.session.user) {
+      logger.warn("Utilisateur non connecté");
+      return res.status(401).json({ error: "Vous devez être connecté pour ajouter un contact." });
     }
 
-    // Trouver l'utilisateur par email
+    // Récupérer l'email du contact depuis la requête
+    const { contact } = req.body;
+
+    // Vérifier si le contact est présent
+    if (!contact) {
+      logger.warn("Le contact est obligatoire !");
+      return res.status(400).json({ error: "Le contact est obligatoire !" });
+    }
+
+    // Vérifier si le contact correspond à un utilisateur existant
+    const contactUser = await User.findOne({ email: contact });
+    if (!contactUser) {
+      logger.warn("L'utilisateur n'existe pas dans la base de données");
+      return res.status(404).json({ error: "Cet utilisateur n'existe pas." });
+    }
+
+    // Récupérer l'utilisateur connecté depuis la session
+    const email = req.session.user.email;
     const user = await User.findOne({ email });
+
     if (!user) {
+      logger.warn("Utilisateur connecté non trouvé");
       return res.status(404).json({ error: "Utilisateur non trouvé." });
     }
 
-    //Ajout du contact
-    user.contact = contact;
+    // Vérifier si le contact est déjà dans la liste
+    if (user.contact.includes(contact)) {
+      logger.warn("Le contact existe déjà dans la liste");
+      return res.status(400).json({ error: "Ce contact existe déjà dans votre liste." });
+    }
+
+    // Ajouter le contact à la liste
+    user.contact.push(contact);
     await user.save();
 
-    res.status(200).json({ success: true, message: "Contact ajouté avec succès !" });   
+    res.status(200).json({ success: true, message: "Contact ajouté avec succès !" });
   } catch (error) {
-
     logger.error("Erreur lors de l'ajout du contact", error);
     res.status(500).json({ error: "Erreur lors de l'ajout du contact" });
   }
-}
+};

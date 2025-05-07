@@ -51,15 +51,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Le mot de passe est obligatoire"],
     minlength: [6, "Le mot de passe doit contenir au moins 6 caractères"],
-    validate: {
-      validator: function (value) {
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(
-          value
-        );
-      },
-      message:
-        "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial",
-    },
+    // validate: {
+    //   validator: function (value) {
+    //     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d@$!%*?&]{6,}$/.test(value);
+    //   },
+    //   message:
+    //     "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial",
+    // },
   },
   contact: { 
     type: [String], 
