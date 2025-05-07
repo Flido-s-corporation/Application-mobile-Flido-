@@ -61,6 +61,10 @@ const userSchema = new mongoose.Schema({
         "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial",
     },
   },
+  contact: { 
+    type: [String], 
+    default: [] 
+  },
   createdAt: {
     type: Date,
     default: Date.now,

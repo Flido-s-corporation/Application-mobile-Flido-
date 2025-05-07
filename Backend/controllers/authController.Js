@@ -175,17 +175,29 @@ module.exports.logout = async (req, res) => {
 //Fonction pour récupérer les contacts
 module.exports.findContact = async (req, res) => {
   try {
-    //Cherche le contact dans la requete
-    const contact = await User.find({ contact: req.body.contact });
-
-    //Vérifie si le contact existe
-    if (!contact) {
-      logger.warn("Aucun contact trouvé");
-      return res.status(404).json({ error: "Aucun contact trouvé" });
+    const { email } = req.body;
+    if(!email) {
+      logger.warn("L'email est obligatoire !");
+      return res.status(400).json({ error: "L'email est obligatoire !" });
     }
 
-    //Renvoie le contact
-    res.status(200).json({ sucess: true, contact: contact });
+    // Rechercher l'utilisateur par email
+    const user = await User.findOne({ email });
+
+    // Vérifier si l'utilisateur existe
+    if (!user) {
+      logger.warn("Utilisateur non trouvé");
+      return res.status(404).json({ error: "Utilisateur non trouvé" });
+    }
+
+    // Vérifier si l'utilisateur a des contacts
+    if (!user.contact || user.contact.length === 0) {
+      logger.warn("Aucun contact trouvé pour cet utilisateur");
+      return res.status(404).json({ error: "Aucun contact trouvé pour cet utilisateur" });
+    }
+
+    res.status(200).json({ success: true, contacts: user.contact });
+
   } catch (error) {
     logger.error("Erreur lors de la recherche du contact", error);
     res.status(500).json({

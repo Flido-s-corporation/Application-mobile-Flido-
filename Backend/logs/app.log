@@ -340,3 +340,41 @@
 2025-05-07 09:50:19 info: Server is running on port 3000
 2025-05-07 09:54:59 info: POST /api/register
 2025-05-07 09:55:00 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 11:07:21 info: Connected to MongoDB
+2025-05-07 11:07:21 info: Server is running on port 3000
+2025-05-07 11:07:39 info: Connected to MongoDB
+2025-05-07 11:07:39 info: Server is running on port 3000
+2025-05-07 11:08:14 info: Connected to MongoDB
+2025-05-07 11:08:14 info: Server is running on port 3000
+2025-05-07 11:08:55 info: Connected to MongoDB
+2025-05-07 11:08:55 info: Server is running on port 3000
+2025-05-07 11:09:12 info: Connected to MongoDB
+2025-05-07 11:09:12 info: Server is running on port 3000
+2025-05-07 11:09:23 info: Connected to MongoDB
+2025-05-07 11:09:23 info: Server is running on port 3000
+2025-05-07 11:10:09 info: Connected to MongoDB
+2025-05-07 11:10:09 info: Server is running on port 3000
+2025-05-07 11:10:32 info: Connected to MongoDB
+2025-05-07 11:10:32 info: Server is running on port 3000
+2025-05-07 11:13:56 info: Connected to MongoDB
+2025-05-07 11:13:56 info: Server is running on port 3000
+2025-05-07 11:20:07 info: Connected to MongoDB
+2025-05-07 11:20:07 info: Server is running on port 3000
+2025-05-07 11:20:21 info: Connected to MongoDB
+2025-05-07 11:20:21 info: Server is running on port 3000
+2025-05-07 11:21:56 info: Connected to MongoDB
+2025-05-07 11:21:56 info: Server is running on port 3000
+2025-05-07 11:22:16 info: Connected to MongoDB
+2025-05-07 11:22:16 info: Server is running on port 3000
+2025-05-07 11:27:32 info: Connected to MongoDB
+2025-05-07 11:27:32 info: Server is running on port 3000
+2025-05-07 11:28:11 info: Connected to MongoDB
+2025-05-07 11:28:11 info: Server is running on port 3000
+2025-05-07 11:28:17 info: Connected to MongoDB
+2025-05-07 11:28:17 info: Server is running on port 3000
+2025-05-07 11:33:18 info: Connected to MongoDB
+2025-05-07 11:33:18 info: Server is running on port 3000
+2025-05-07 11:35:51 info: Connected to MongoDB
+2025-05-07 11:35:51 info: Server is running on port 3000
+2025-05-07 11:36:02 info: POST /api/register
+2025-05-07 11:36:03 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
