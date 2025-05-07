@@ -296,3 +296,47 @@
 2025-04-30 15:43:38 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
 2025-04-30 15:43:54 info: POST /api/register
 2025-04-30 15:43:54 info: Utilisateur créer
+2025-05-07 08:54:59 info: Connected to MongoDB
+2025-05-07 08:54:59 info: Server is running on port 3000
+2025-05-07 08:59:56 info: POST /staff/api/register
+2025-05-07 09:03:36 info: POST /staff/api/register
+2025-05-07 09:03:51 info: POST /staff/api/register
+2025-05-07 09:04:15 info: POST /staff/api/register
+2025-05-07 09:06:39 info: POST /api/register
+2025-05-07 09:06:39 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:07:30 info: POST /api/register
+2025-05-07 09:07:31 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:08:55 info: Connected to MongoDB
+2025-05-07 09:08:55 info: Server is running on port 3000
+2025-05-07 09:08:56 info: POST /api/register
+2025-05-07 09:08:56 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:10:01 info: POST /api/register
+2025-05-07 09:10:01 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:11:29 info: POST /api/register
+2025-05-07 09:11:29 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:13:16 info: POST /api/register
+2025-05-07 09:13:17 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:21:10 info: POST /api/register
+2025-05-07 09:21:11 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:21:24 info: Connected to MongoDB
+2025-05-07 09:21:24 info: Server is running on port 3000
+2025-05-07 09:21:29 info: POST /api/register
+2025-05-07 09:21:29 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:25:11 info: Connected to MongoDB
+2025-05-07 09:25:11 info: Server is running on port 3000
+2025-05-07 09:30:18 info: Connected to MongoDB
+2025-05-07 09:30:18 info: Server is running on port 3000
+2025-05-07 09:30:28 info: Connected to MongoDB
+2025-05-07 09:30:28 info: Server is running on port 3000
+2025-05-07 09:35:36 info: Connected to MongoDB
+2025-05-07 09:35:36 info: Server is running on port 3000
+2025-05-07 09:41:39 info: Connected to MongoDB
+2025-05-07 09:41:39 info: Server is running on port 3000
+2025-05-07 09:41:56 info: POST /api/register
+2025-05-07 09:41:56 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:46:12 info: POST /api/register
+2025-05-07 09:46:12 error: Erreur durant l'inscription User validation failed: contact: Le numéro de contact est obligatoire, password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+2025-05-07 09:50:19 info: Connected to MongoDB
+2025-05-07 09:50:19 info: Server is running on port 3000
+2025-05-07 09:54:59 info: POST /api/register
+2025-05-07 09:55:00 error: Erreur durant l'inscription User validation failed: password: Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial

@@ -171,3 +171,56 @@ module.exports.logout = async (req, res) => {
   })
   res.redirect('/');
 };
+
+//Fonction pour récupérer les contacts
+module.exports.findContact = async (req, res) => {
+  try {
+    //Cherche le contact dans la requete
+    const contact = await User.find({ contact: req.body.contact });
+
+    //Vérifie si le contact existe
+    if (!contact) {
+      logger.warn("Aucun contact trouvé");
+      return res.status(404).json({ error: "Aucun contact trouvé" });
+    }
+
+    //Renvoie le contact
+    res.status(200).json({ sucess: true, contact: contact });
+  } catch (error) {
+    logger.error("Erreur lors de la recherche du contact", error);
+    res.status(500).json({
+      error: "Erreur lors de la recherche du contact",
+    });
+  }
+};
+
+//Fonction pour ajouter un contact
+
+module.exports.addContact = async(req, res) => {
+  try {
+    //Cherche l'email et le contact dans la requete
+    const { email, contact } = req.body;
+
+    //Vérifier si l'email et le contact sont présents
+    if(!email || !contact) {
+      logger.warn("L'email et le contact sont obligatoires !");
+      return res.status(400).json({ error: "L'email et le contact sont obligatoires !" });
+    }
+
+    // Trouver l'utilisateur par email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "Utilisateur non trouvé." });
+    }
+
+    //Ajout du contact
+    user.contact = contact;
+    await user.save();
+
+    res.status(200).json({ success: true, message: "Contact ajouté avec succès !" });   
+  } catch (error) {
+
+    logger.error("Erreur lors de l'ajout du contact", error);
+    res.status(500).json({ error: "Erreur lors de l'ajout du contact" });
+  }
+}
