@@ -2,21 +2,10 @@
  * Definissions des fonctions qui seront associées
  * aux futurs routes dans authRoutes.js
  */
-
 const bcrypt = require("bcrypt");
 const path = require("path");
-const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const logger = require("../middlewares/winston");
-const { OAuth2Client } = require("google-auth-library");
-
-//Création d'une instance de OAuth2Client pour l'authentification Google
-// avec les identifiants du projet Google Cloud
-const client = new OAuth2Client(
-  process.env.CLIENT_ID,
-  process.env.CLIENT_SECRET,
-  process.env.REDIRECT_URI
-);
 
 //page d'accueil ou page de profil en fonction de la présence de l'utilisateur dans la session
 module.exports.home = async (req, res) => {
@@ -99,18 +88,14 @@ module.exports.login = async (req, res) => {
         .json({ error: "L'email ou le mot de passe est incorrecte." });
     }
 
-    //Créer et assigner un token
-    const token = jwt.sign({ _id: existingUser._id }, process.env.TOKEN_SECRET);
-    logger.info("Utilisateur connecté avec succès");
-    res.cookie("auth-token", token, { httpOnly: true, maxAge: 3600000 });
-
     req.session.user = {
       id: existingUser._id,
       name: existingUser.firstName + " " + existingUser.lastName,
       email: existingUser.email,
     };
-
+    logger.info("Utilisateur connecté avec succès");
     res.json({ message: "Login successful!" });
+
   } catch (error) {
     logger.error("Erreur durant la connexion: ", error);
     res
