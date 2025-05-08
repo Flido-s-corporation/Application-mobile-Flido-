@@ -4,7 +4,7 @@ import "../global.css"
 
 const index = () => {
     
-    return <Redirect href={"/Pages/connexion"} /> //Permet de rediriger automatiquement l'application
+    return <Redirect href={"/Pages/Contacs"} /> //Permet de rediriger automatiquement l'application
     //vers la page d'accueil une fois l'application démarrée avec expo-router
 }
 
