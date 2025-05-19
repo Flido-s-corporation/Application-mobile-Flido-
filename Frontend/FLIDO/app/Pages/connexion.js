@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { View, Text, TextInput, TouchableOpacity, Image, Alert } from "react-native";
-import styles from "../../Styles/connexionStyle";
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 
 const API_URL = "http://192.168.186.1:3000/api";
 const LoginScreen = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [notification, setNotification] = useState({ message: "", type: "" });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -17,12 +21,42 @@ const LoginScreen = () => {
 
   const handleChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: "" });
+    }
+  };
+
+  const showNotification = (message, type) => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification({ message: "", type: "" }), 3000);
   };
 
   const handleLogin = async () => {
-    // Validation simple sur frontend
-    if (!formData.email || !formData.password) {
-      Alert.alert("Erreur", "Veuillez remplir tous les champs");
+    // Reset all errors
+    setErrors({
+      email: "",
+      password: "",
+    });
+
+    let isValid = true;
+    const newErrors = { ...errors };
+
+    if (!formData.email) {
+      newErrors.email = "L'email est obligatoire";
+      isValid = false;
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = "Email invalide";
+      isValid = false;
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Le mot de passe est obligatoire";
+      isValid = false;
+    }
+
+    if (!isValid) {
+      setErrors(newErrors);
       return;
     }
 
@@ -33,9 +67,8 @@ const LoginScreen = () => {
       });
 
       if (response.data.message === "Login successful!") {
-        Alert.alert("Succès", "Connexion réussie");
-
-        router.push("/Pages/afterLogin");
+        showNotification("Connexion réussie !", "success");
+        setTimeout(() => router.push("/Pages/afterLogin"), 2000);
       }
     } catch (error) {
       let errorMessage = "Erreur lors de la connexion";
@@ -43,10 +76,14 @@ const LoginScreen = () => {
       if (error.response) {
         switch (error.response.status) {
           case 400:
-            errorMessage = "Email ou mot de passe incorrect";
-            break;
+            setErrors({ 
+              ...errors, 
+              email: "Email ou mot de passe incorrect",
+              password: "Email ou mot de passe incorrect"
+            });
+            return;
           case 500:
-            errorMessage = "Erreur serveur lors de la connexion";
+            errorMessage = "Erreur serveur";
             break;
           default:
             errorMessage = `Erreur serveur (${error.response.status})`;
@@ -57,7 +94,7 @@ const LoginScreen = () => {
         errorMessage = "Erreur réseau ou configuration";
       }
       
-      Alert.alert("Erreur", errorMessage);
+      showNotification(errorMessage, "error");
       console.error("Détail de l'erreur:", error);
     }
   };
@@ -65,65 +102,89 @@ const LoginScreen = () => {
   return (
     <LinearGradient
       colors={["#4b0082", "#6a0dad"]}
-    className = 'flex-1 justify-center bg-[#4b0082] items-center '
+      className="flex-1 justify-center bg-[#DECFBC] items-center"
     >
-      <View className=' w-[90%] items-center'>
-        <Image style={styles.logo}  source={require("../../assets/flido.png")} />
-        <Text style={styles.title}>Flido</Text>
-        <Text style={styles.subtitle}>Connecte-toi pour continuer</Text>
+      {/* Notification */}
+      {notification.message && (
+        <View
+          className={`absolute top-0 left-0 right-0 p-4 ${
+            notification.type === "success" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          <Text className="text-white text-center">{notification.message}</Text>
+        </View>
+      )}
+
+      <View className="w-[90%] items-center">
+        <Image 
+          className="w-[150] h-[150] mb-4" 
+          source={require("../../assets/images/lg.png")} 
+        />
+        <Text className="text-3xl font-bold text-white mb-2">Flido</Text>
+        <Text className="text-base text-white mb-6">Connecte-toi pour continuer</Text>
 
         {/* Champs de connexion */}
-        <View style={styles.inputGroup}>
+        <View className="w-full mb-4">
           <TextInput
-            style={styles.input}
+            className={`w-full p-3 rounded bg-white ${
+              errors.email ? "border border-red-500" : ""
+            }`}
             placeholder="E-mail"
             onChangeText={(text) => handleChange("email", text)}
             value={formData.email}
             keyboardType="email-address"
             autoCapitalize="none"
           />
+          {errors.email && (
+            <Text className="text-red-500 text-xs mt-1">{errors.email}</Text>
+          )}
         </View>
         
-        <View style={styles.inputGroup}>
+        <View className="w-full mb-4 relative">
           <TextInput
-            style={styles.input}
+            className={`w-full p-3 rounded bg-white ${
+              errors.password ? "border border-red-500" : ""
+            }`}
             placeholder="Mot de passe"
             secureTextEntry={!passwordVisible}
             onChangeText={(text) => handleChange("password", text)}
             value={formData.password}
           />
+          {errors.password && (
+            <Text className="text-red-500 text-xs mt-1">{errors.password}</Text>
+          )}
           <TouchableOpacity
             onPress={() => setPasswordVisible(!passwordVisible)}
-            style={styles.togglePassword}
+            className="absolute right-3 top-3"
           >
             <Text>{passwordVisible ? "🙈" : "👁️"}</Text>
           </TouchableOpacity>
         </View>
         
-        <TouchableOpacity>
-          <Text style={styles.forgotPassword}>Mot de passe oublié?</Text>
+        <TouchableOpacity className="mb-6">
+          <Text className="text-[#ccc] underline">Mot de passe oublié?</Text>
         </TouchableOpacity>
 
         {/* Boutons */}
         <TouchableOpacity 
-          style={styles.loginButton} 
+          className="w-full bg-[#85664A] p-4 rounded items-center mb-4"
           onPress={handleLogin}
         >
-          <Text style={styles.buttonText}>Se connecter</Text>
+          <Text className="text-white font-bold text-base">Se connecter</Text>
         </TouchableOpacity>
         
-        <Text style={styles.orText}>ou</Text>
+        <Text className="text-[#ccc] mb-4">ou</Text>
         
-        <TouchableOpacity style={styles.googleLogin}>
+        <TouchableOpacity className="w-full bg-white p-4 rounded flex-row items-center justify-center mb-6">
           <Image
-            style={styles.googleIcon}
+            className="w-5 h-5 mr-2"
             source={require("../../assets/google.png")}
           />
-          <Text style={styles.googleLoginText}>Se connecter avec Google</Text>
+          <Text className="text-black text-sm">Se connecter avec Google</Text>
         </TouchableOpacity>
         
         <TouchableOpacity onPress={() => router.push("/Pages/inscription")}>
-          <Text style={styles.signupLink}>
+          <Text className="text-white underline text-sm">
             Pas encore de compte? S'inscrire
           </Text>
         </TouchableOpacity>

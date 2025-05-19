@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
-    backgroundColor: "#4b0082",
+    backgroundColor: "#DECFBC",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: width * 0.5, // Adaptation à la taille de l'écran
-    height: width * 0.5,
+    width: width * 0.2, // Adaptation à la taille de l'écran
+    height: width * 0.2,
     marginBottom: height * 0.02,
     borderRadius: (width * 0.5) / 2, // Bordure arrondie proportionnelle
   },
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: height * 0.03,
+    marginTop: height * 0.02,
   },
   googleIcon: {
     width: width * 0.05,
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04,
   },
   signupLink: {
-    color: "#ccc",
+    color: "black",
     textDecorationLine: "underline",
     marginBottom: "10%",
     fontSize: width * 0.04,

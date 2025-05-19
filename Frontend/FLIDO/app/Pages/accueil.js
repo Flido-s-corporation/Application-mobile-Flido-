@@ -12,11 +12,11 @@ const Accueil = () => {
         // colors={["#000080", "#800080"]}
         className="flex-1"
       >
-        <View className="flex-1 items-center justify-center">
+        <View className="flex-1 items-center justify-center bg-[#DECFBC]">
           <View>
             <TouchableOpacity>
               <Text
-                className="text-white p-[10] bg-[#800080] rounded-[50] mb-[10] items-center text-center"
+                className="color-white text-lg font-bold p-[10] bg-[#85664A] rounded-[50] mb-[10] items-center text-center h-[50]"
                 onPress={() => router.push("/Pages/connexion")}
               >
                 CONNEXION
@@ -24,7 +24,7 @@ const Accueil = () => {
             </TouchableOpacity>
             <TouchableOpacity>
               <Text
-                className="text-white p-[10] bg-[#000080] rounded-[50] mb-[10] items-center text-center w-[300]"
+                className="color-white text-lg font-bold  p-[10] bg-[#453A2C] rounded-[50] mb-[10] items-center text-center w-[250] h-[50] justify-center" //Modif
                 onPress={() => router.push("/Pages/inscription")}
               >
                 INSCRIPTION

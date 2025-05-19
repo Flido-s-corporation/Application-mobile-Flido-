@@ -440,3 +440,21 @@
 2025-05-07 13:11:33 info: Server is running on port 3000
 2025-05-07 13:12:03 info: Connected to MongoDB
 2025-05-07 13:12:03 info: Server is running on port 3000
+2025-05-18 17:03:14 info: Connected to MongoDB
+2025-05-18 17:03:14 info: Server is running on port 3000
+2025-05-18 17:06:59 info: POST /api/register
+2025-05-18 17:07:00 info: Utilisateur créer
+2025-05-18 17:07:39 info: POST /api/login
+2025-05-18 17:07:39 info: Utilisateur connecté avec succès
+2025-05-18 18:14:57 info: POST /api/register
+2025-05-18 18:14:59 info: Utilisateur créer
+2025-05-18 18:24:18 info: POST /api/login
+2025-05-18 18:24:18 info: Utilisateur connecté avec succès
+2025-05-19 21:31:59 info: Connected to MongoDB
+2025-05-19 21:31:59 info: Server is running on port 3000
+2025-05-19 21:33:11 info: POST /api/register
+2025-05-19 21:33:12 info: Utilisateur créer
+2025-05-19 21:42:59 info: POST /api/login
+2025-05-19 21:42:59 warn: Mot de passe erroné
+2025-05-19 21:43:05 info: POST /api/login
+2025-05-19 21:43:05 info: Utilisateur connecté avec succès
