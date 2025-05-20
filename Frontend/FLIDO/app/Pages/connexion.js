@@ -68,7 +68,7 @@ const LoginScreen = () => {
 
       if (response.data.message === "Login successful!") {
         showNotification("Connexion réussie !", "success");
-        setTimeout(() => router.push("/Pages/afterLogin"), 2000);
+        setTimeout(() => router.push("/Pages/Contacs"), 2000);
       }
     } catch (error) {
       let errorMessage = "Erreur lors de la connexion";
