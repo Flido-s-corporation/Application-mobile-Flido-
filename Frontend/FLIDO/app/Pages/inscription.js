@@ -169,6 +169,7 @@ const SignUpScreen = () => {
               errors.firstName ? "border border-red-500" : ""
             }`}
             placeholder="Prénom"
+            placeholderTextColor="black"
             onChangeText={(text) => handleChange("firstName", text)}
             value={formData.firstName}
           />
@@ -183,6 +184,7 @@ const SignUpScreen = () => {
               errors.lastName ? "border border-red-500" : ""
             }`}
             placeholder="Nom"
+            placeholderTextColor="black"
             onChangeText={(text) => handleChange("lastName", text)}
             value={formData.lastName}
           />
@@ -197,6 +199,7 @@ const SignUpScreen = () => {
               errors.email ? "border border-red-500" : ""
             }`}
             placeholder="E-mail"
+            placeholderTextColor="black"
             onChangeText={(text) => handleChange("email", text)}
             value={formData.email}
             keyboardType="email-address"
@@ -213,6 +216,7 @@ const SignUpScreen = () => {
               errors.password ? "border border-red-500" : ""
             }`}
             placeholder="Créer un mot de passe"
+            placeholderTextColor="black"
             secureTextEntry={!passwordVisible}
             onChangeText={(text) => handleChange("password", text)}
             value={formData.password}
@@ -234,6 +238,7 @@ const SignUpScreen = () => {
               errors.confirmPassword ? "border border-red-500" : ""
             }`}
             placeholder="Confirmer votre mot de passe"
+            placeholderTextColor="black"
             secureTextEntry={!passwordVisible}
             onChangeText={(text) => handleChange("confirmPassword", text)}
             value={formData.confirmPassword}

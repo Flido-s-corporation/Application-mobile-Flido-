@@ -12,7 +12,7 @@ buildscript {
         google()
         mavenCentral()
         maven {
-            url "https://maven.expo.dev"
+            url "http://maven.expo.dev"
             allowInsecureProtocol = true // À retirer après résolution
         }
         maven { url "https://jitpack.io" }

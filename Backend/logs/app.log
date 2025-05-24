@@ -460,3 +460,9 @@
 2025-05-19 21:43:05 info: Utilisateur connecté avec succès
 2025-05-19 22:01:50 info: POST /api/login
 2025-05-19 22:01:50 info: Utilisateur connecté avec succès
+2025-05-23 14:32:52 info: Connected to MongoDB
+2025-05-23 14:32:52 info: Server is running on port 3000
+2025-05-23 14:35:24 info: POST /api/register
+2025-05-23 14:35:24 info: Utilisateur créer
+2025-05-23 14:36:13 info: POST /api/login
+2025-05-23 14:36:13 info: Utilisateur connecté avec succès

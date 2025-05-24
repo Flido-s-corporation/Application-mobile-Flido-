@@ -68,6 +68,7 @@ const Contacs = () => {
           />
         </View>
 
+
         {/* Search Button */}
         <View className="pb-[20] items-center">
           <TouchableOpacity className="bg-[#000000] h-[50] w-[200] rounded-full justify-center items-center">

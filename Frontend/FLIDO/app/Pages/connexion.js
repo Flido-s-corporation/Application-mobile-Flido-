@@ -101,7 +101,7 @@ const LoginScreen = () => {
 
   return (
     <LinearGradient
-      colors={["#4b0082", "#6a0dad"]}
+      colors={["#DECFBC", "#DECFBC"]}
       className="flex-1 justify-center bg-[#DECFBC] items-center"
     >
       {/* Notification */}
@@ -121,7 +121,7 @@ const LoginScreen = () => {
           source={require("../../assets/images/lg.png")} 
         />
         <Text className="text-3xl font-bold text-white mb-2">Flido</Text>
-        <Text className="text-base text-white mb-6">Connecte-toi pour continuer</Text>
+        <Text className="text-base text-black mb-6">Connecte-toi pour continuer</Text>
 
         {/* Champs de connexion */}
         <View className="w-full mb-4">
@@ -130,6 +130,7 @@ const LoginScreen = () => {
               errors.email ? "border border-red-500" : ""
             }`}
             placeholder="E-mail"
+            placeholderTextColor="black"
             onChangeText={(text) => handleChange("email", text)}
             value={formData.email}
             keyboardType="email-address"
@@ -146,6 +147,7 @@ const LoginScreen = () => {
               errors.password ? "border border-red-500" : ""
             }`}
             placeholder="Mot de passe"
+            placeholderTextColor="black"
             secureTextEntry={!passwordVisible}
             onChangeText={(text) => handleChange("password", text)}
             value={formData.password}
@@ -184,7 +186,7 @@ const LoginScreen = () => {
         </TouchableOpacity>
         
         <TouchableOpacity onPress={() => router.push("/Pages/inscription")}>
-          <Text className="text-white underline text-sm">
+          <Text className="text-black underline text-sm">
             Pas encore de compte? S'inscrire
           </Text>
         </TouchableOpacity>

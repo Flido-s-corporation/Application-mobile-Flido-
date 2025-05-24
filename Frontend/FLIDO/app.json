@@ -4,7 +4,7 @@
     "slug": "FLIDO",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/lg.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,8 +13,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/lg.png",
+        "backgroundColor": "#DECFBC"
       },
       "package": "com.votreentreprise.votreapplication",
       "googleServicesFile": "./google-services.json"
@@ -22,17 +22,22 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/lg.png"
+    },
+    "splash": {
+      "image": "./assets/images/lg.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#DECFBC"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/lg.png",
           "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "resizeMode": "cover",
+          "backgroundColor": "#DECFBC"
         }
       ],
       "@react-native-firebase/app",
@@ -41,6 +46,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c8eaa267-fde5-4975-afac-3dd9df484ef9"
+      }
     }
   }
 }
